@@ -10,7 +10,8 @@ const Member = require('../models/member');
 // require member model // 
 
 // REGISTER ROUTE //
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
+		console.log(req.body, '<-- this is req.body at start of register route');
 		try {
 
 			const foundMember = await Member.findOne({username:req.body.username})
@@ -26,16 +27,20 @@ router.post('/register', (req, res, next) => {
 				})
 			} else {
 				console.log('username is unique');
-				const password = req.body.pasword
-				const hashedPassword = bcrypt.hashSync(password,bcrypt.genSaltSync(10));
-				// the hashed password is what we want to store in the DB
+				console.log(req.body, '<-- this is the req body');
+				const password = req.body.password
 
-				const userDbEntry = {};
-				userDbEntry.name = req.body.name;
-				userDbEntry.username = req.body.username;
+				// IS THERE A SECURITY RISK RIGHT HERE?
+
+				const hashedPassword = bcrypt.hashSync(password , bcrypt.genSaltSync(10));
+				// the hashed password is what we want to store in the DB
+				req.body.password = hashedPassword;
+				// const userDbEntry = {};
+				// userDbEntry.name = req.body.name;
+				// userDbEntry.username = req.body.username;
 				
 				// ... zipcode, email, etc
-				const createdMember = await Member.create(userDbEntry)
+				const createdMember = await Member.create(req.body)
 
 				res.json({
 					status: 200,

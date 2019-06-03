@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const eventModel = require('../models/event');
 
 const memberSchema = new mongoose.Schema({
-	username: {type:String, required:true},
-	firstName: {type:String, required:true},
-	lastName: {type:String, required:true},
-	email: {type:String, required: true},
-	password: {type: String, required: true},
+	username: {type: String/*, required:true, path: 'username'*/},
+	firstName: {type: String/*, required:true*/},
+	lastName: {type: String/*, required:true*/},
+	email: {type: String/*, required: true*/},
+	password: {type: String/*, required: true, path: 'password'*/},
 	bio: {
 		type: String, 
 		required: false, 
@@ -15,7 +15,7 @@ const memberSchema = new mongoose.Schema({
 	},
 	profilePic: {
 		type: Buffer, 
-		required: true 
+		required: false 
 		// ,default: defaultpic
 	},
 	memberGames: [{
@@ -25,14 +25,14 @@ const memberSchema = new mongoose.Schema({
 	isHost: Boolean,
 	age: {
 		type: Number,
-		required: true,
+		/*required: true,*/
 		min: [18, 'beta for 18 and older'],
 		max: [100, 'dude come on you are not that old']
 	},
 	gender: {
 		type: String,
-		enum:['Male','Female','Non-Binary','Prefer Not To Say'],
-		required: true
+		enum:['Male','Female','Non-Binary','Prefer Not To Say']
+		// ,required: true
 	}
 
 })
