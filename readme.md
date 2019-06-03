@@ -20,6 +20,7 @@
 - link to host's profile
 - format of game 
 - type of sport
+
 - # of players (pre-populated based on sport)
 
 <!-- - User can choose whether they're (superuser) host or not  -->
