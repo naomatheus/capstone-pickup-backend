@@ -54,13 +54,6 @@
 
 ## MERN Stack
 
-#### User Model
-
-##### 'Superuser' Model
-
-##### Event Model
-
-
 ## Third Party API
 [Chicago Park District API]
 (https://catalog.data.gov/dataset/parks-chicago-park-district-facilities/resource/fc40ddc3-5b35-433e-b519-1072fa9fdcc9)
