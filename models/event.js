@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const memberModel = require('./models/eventModel');
+const memberModel = require('../models/member');
 
 const eventSchema = new mongoose.Schema({
 	name: {type:String, required:true},
@@ -23,7 +23,7 @@ const eventSchema = new mongoose.Schema({
 	location: String,
 	date: Date,
 	host: {
-		mongoose.Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Member'
 	},
 	playersAllowed: {type: Number, required:true}
@@ -31,6 +31,6 @@ const eventSchema = new mongoose.Schema({
 	// should I create arrays for my sport types with keys and values for each property of the sport
 })
 
-const Event = mongoose.model('Event',userSchema)
+const Event = mongoose.model('Event',eventSchema)
 
 module.exports = Event;

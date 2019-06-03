@@ -1,0 +1,33 @@
+{
+  "name": "capstone-ga-sei",
+  "version": "1.0.0",
+  "description": "This is my final capstone project for General Assembly Software Engineering Immersive",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.5.12",
+    "node-fetch": "^2.6.0",
+    "superagent": "^5.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naomatheus/capstone-pickup.git"
+  },
+  "author": "Matthew Robinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naomatheus/capstone-pickup/issues"
+  },
+  "homepage": "https://github.com/naomatheus/capstone-pickup#readme"
+}
