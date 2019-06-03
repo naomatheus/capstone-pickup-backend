@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const eventModel = require('./models/eventModel');
+const eventModel = require('./models/event');
 
-const userSchema = new mongoose.Schema({
+const memberSchema = new mongoose.Schema({
 	name: {type:String, required:true},
 	email: {type:String, required: true},
 	password: {type: String, required: true},
@@ -16,14 +16,26 @@ const userSchema = new mongoose.Schema({
 		required: true, 
 		default: defaultpic
 	},
-	userGames: [{
+	memberGames: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Event' 
 	}],
-	isHost: Boolean
+	isHost: Boolean,
+	age: {
+		type: Number,
+		required: true,
+		min: [18, 'beta for 18 and older'],
+		max: [100, 'dude come on you are not that old']
+	},
+	gender: {
+		type: String,
+		enum:['Male','Female','Non-Binary','Prefer Not To Say'],
+		required: true
+	}
+
 })
 
-const User = mongoose.model('User',userSchema)
+const Member = mongoose.model('Member',memberSchema)
 
-module.exports = User;
+module.exports = Member;
 
