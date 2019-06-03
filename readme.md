@@ -3,22 +3,22 @@
 ## User Stories
 ### MVP User Profile
 - User should be able to create a profile
--- user can upload a profile image
--- user can enter their pickup game preferences
--- user can select between competitive and recreational games
--- user can say whether they're novice, intermediate, or advanced player
--- enter age
--- enter short description (120 char)
+- user can upload a profile image
+- user can enter their pickup game preferences
+- user can select between competitive and recreational games
+- user can say whether they're novice, intermediate, or advanced player
+- enter age
+- enter short description (120 char)
 - user profile includes event they're signed up for 
 
 ### MVP Event Setup
 - Event create includes
--- time (start time, and general play time)
--- location
--- link to host's profile
--- format of game
--- type of sport
--- # of players (pre-populated based on sport)
+- time (start time, and general play time)
+- location
+- link to host's profile
+- format of game
+- type of sport
+- # of players (pre-populated based on sport)
 
 - User can choose whether they're (superuser)host or not 
 - User should be able to choose from a list of common games
@@ -38,7 +38,7 @@
 -- ISO (in search of)
 -- Time game occurs
 
--- super users can set up tournaments (recurring event setups)
+- super users can set up tournaments (recurring event setups)
 
 ### Stretch User Profile
 - common games list will include all upcoming events
