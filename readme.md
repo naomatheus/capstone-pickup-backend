@@ -5,10 +5,10 @@
 - User should be able to create a profile
 -- user can upload a profile image
 -- user can enter their pickup game preferences
---- user can select between competitive and recreational games
---- user can say whether they're novice, intermediate, or advanced player
---- enter age
---- enter short description (120 char)
+-- user can select between competitive and recreational games
+-- user can say whether they're novice, intermediate, or advanced player
+-- enter age
+-- enter short description (120 char)
 - user profile includes event they're signed up for 
 
 ### MVP Event Setup
