@@ -47,9 +47,7 @@ router.post('/register', async (req, res, next) => {
 					data: createdMember,
 					credentials: 'include'
 				})
-
 			}
-
 		} catch (err){
 			next(err)
 		}
