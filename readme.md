@@ -21,7 +21,7 @@
 - format of game 
 - type of sport
 
-- # of players (pre-populated based on sport)
+- Number of players (pre-populated based on sport)
 
 <!-- - User can choose whether they're (superuser) host or not  -->
 - User should be able to choose from a list of common games
