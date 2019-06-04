@@ -113,6 +113,7 @@ router.delete('/:id', async (req, res, next) => {
 /// DELETE ROUTE //
 
 //// EVENT ROUTES /////
+
 // event post route //
 router.post('/:id/events', async (req,res,next) => {
 	console.log('creating an event');
@@ -125,9 +126,13 @@ router.post('/:id/events', async (req,res,next) => {
 		
 		const foundMember = await Member.findOne({_id:req.params.id});
 
-		console.log(foundMember._id, '<-- foundmember_id in events post route');
-
 		await createdEvent.createdBy.push(foundMember._id);
+
+		/// when an event is created, it gets pushed  into the foundMember's eventsCreated array. eventsCreated array on the member receives the eventId
+		await foundMember.eventsCreated.push(createdEvent._id);
+
+		console.log(foundMember, 'after the event is pushed in ');
+
 
 		res.json({
 			status: 200,
@@ -140,5 +145,40 @@ router.post('/:id/events', async (req,res,next) => {
 	}
 })
 // event post route //
+
+//// EVENT PATCH ROUTE ////
+
+/// in this route, an event will be found based on its ID.
+/// the member will be found based on the id
+
+/// the event document will be modified to reflect the member that plans on attending
+
+router.patch('/:id/events/:eventId/join', async (req, res, next) => {
+
+	// - PUT/PATCH 'user/{id}/game/{gameId}/edit||join'
+	// -- Allows user to edit a game resource
+
+	const updatedEvent = await Event.findByIdAndUpdate(req.params.eventId);
+	const foundMember = await Member.findById(req.params.id);
+
+	/// the member found will be able to say they are attending this event
+
+	console.log(updatedEvent, '<-- this is the updated event');
+	updatedEvent.memberAttendees.push(foundMember._id);
+
+	res.json({
+		status: 200,
+		data: updatedEvent,
+		credentials: 'include'
+	})
+
+
+	
+})
+
+
+//// EVENT PATCH ROUTE ////
+
+
 
 module.exports = router;

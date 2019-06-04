@@ -54,13 +54,10 @@ router.post('/', async (req,res,next) => {
 	try {
 		console.log('creating an event <------');
 		const createdEvent = await Event.create(req.body)
-
-		/// find the id of the logged in user, and send that user's ID into the createdBy propety of the event
-
-		console.log(req.session, '<-- this is req.session');
-		// console.log(req., '<-- this is req.session');
-
+		
 		// const foundMember = Member.findOne({req.session.userDbId <-- don't actually have this req.session});
+
+		
 
 
 		res.json({

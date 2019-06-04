@@ -18,6 +18,7 @@ const memberSchema = new mongoose.Schema({
 		required: false 
 		// ,default: defaultpic
 	},
+	/// when an event is created, it gets pushed  into the foundMember's eventsCreated array. eventsCreated array on the member receives the eventId
 	eventsCreated: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Event' 

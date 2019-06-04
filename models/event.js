@@ -16,6 +16,7 @@ const eventSchema = new mongoose.Schema({
 		required: false 
 		//, default: defaultpic
 	},
+	// there should be an eventsController route that let's members select an event to say they will attend
 	memberAttendees: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Member' 
