@@ -47,6 +47,7 @@ app.use(cors(corsOptions));
 const memberController = require('./controllers/memberController');
 const authController = require('./controllers/authController')
 const eventController = require('./controllers/eventController');
+const apiController = require('./controllers/apiController');
 /// require controllers after middle ware ///
 
 app.use('/auth', authController)
@@ -54,9 +55,7 @@ app.use('/members', memberController);
 app.use('/events', eventController);
 
 
-// app.use('/api/v1/apiController',apiController);
-/// API /// 
-
+app.use('/api/v1/',apiController);
 
 /// setting up the listener
 app.listen(process.env.PORT, () => {

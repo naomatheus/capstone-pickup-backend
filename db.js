@@ -5,7 +5,7 @@ const connectionString = process.env.MONGODB_URI
 mongoose.connect(connectionString, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
-	useFindAndMondify: false
+	useFindAndModify: false
 })
 
 mongoose.connection.on('connected', () => {
