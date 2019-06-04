@@ -46,10 +46,12 @@ app.use(cors(corsOptions));
 /// require controllers after middle ware ///
 const memberController = require('./controllers/memberController');
 const authController = require('./controllers/authController')
+const eventController = require('./controllers/eventController');
 /// require controllers after middle ware ///
 
 app.use('/auth', authController)
 app.use('/members', memberController);
+app.use('/events', eventController);
 
 
 // app.use('/api/v1/apiController',apiController);

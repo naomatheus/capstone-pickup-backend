@@ -40,7 +40,6 @@ const memberSchema = new mongoose.Schema({
 		ref: 'Event',
 		required: false
 	}]
-
 })
 
 const Member = mongoose.model('Member',memberSchema)

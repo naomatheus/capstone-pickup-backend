@@ -51,31 +51,11 @@ router.get('/:id', async (req,res,next) => {
 
 /// SHOW ROUTE /// 
 
-// /// POST ROUTE /// 
-
-// router.post('/register', async (req, res, next) => {
-// 	try {
-
-// 		const createdMember = await Member.create(req.body)
-
-// 		res.json({
-// 			status: 200,
-// 			data: createdMember,
-// 			credentials: 'include'
-// 		})
-
-// 	} catch (err){
-
-// 		next(err)
-// 	}
-// })
-// /// POST ROUTE /// 
-
-// UPDATE ROUTE // 
-// has a put or patch method // 
+// Member PUT ROUTE // 
 
 router.put('/:id', async (req,res,next) => {
 	try {
+
 		const foundMember = await Member.findByIdAndUpdate(req.params.id, req.body, {new: true});
 
 		res.json({
@@ -166,18 +146,36 @@ router.patch('/:id/events/:eventId/join', async (req, res, next) => {
 	console.log(updatedEvent, '<-- this is the updated event');
 	updatedEvent.memberAttendees.push(foundMember._id);
 
+	const attendingMember = await Member.findByIdAndUpdate(req.params.id);
+
+	
+
+	attendingMember.eventsAttending.push(updatedEvent._id);
+
+	console.log(attendingMember, '<-- this is the member document that should receive an eventId in its eventsAttending property');
+
 	res.json({
 		status: 200,
 		data: updatedEvent,
+		otherData: attendingMember,
 		credentials: 'include'
 	})
-
-
-	
 })
 
-
 //// EVENT PATCH ROUTE ////
+
+/// MEMBER PATCH ROUTE //// 
+
+// in this route, members are able to add themselves to events. the eventsAttending property of the member document is updated to include the ID of events the member would like to attend
+
+// this route will find a member
+		// this route will find an event by id
+
+// 		const foundEvent = Event.findOne()
+// 		// this route should update a member document's eventsAttending property with ids of events they select
+// router.patch('/:id/events/:eventId/join')
+
+
 
 
 
