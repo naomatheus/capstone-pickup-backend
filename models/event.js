@@ -16,17 +16,17 @@ const eventSchema = new mongoose.Schema({
 		required: false 
 		//, default: defaultpic
 	},
-	members: [{
+	memberAttendees: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Member' 
 	}],
 	location: String,
 	date: Date,
-	host: {
+	createdBy: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Member'
 	},
-	playersAllowed: {type: Number, required:true}
+	maxPlayers: {type: Number, required:true}
 	// how would I populate a number of players based on the sport that was selected?
 	// should I create arrays for my sport types with keys and values for each property of the sport
 })

@@ -18,7 +18,7 @@ const memberSchema = new mongoose.Schema({
 		required: false 
 		// ,default: defaultpic
 	},
-	memberGames: [{
+	eventsCreated: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Event' 
 	}],
@@ -33,7 +33,12 @@ const memberSchema = new mongoose.Schema({
 		type: String,
 		enum:['Male','Female','Non-Binary','Prefer Not To Say']
 		// ,required: true
-	}
+	},
+	eventsAttending: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Event',
+		required: false
+	}]
 
 })
 
