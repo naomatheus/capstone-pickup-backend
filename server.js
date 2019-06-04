@@ -51,6 +51,7 @@ const authController = require('./controllers/authController')
 app.use('/auth', authController)
 app.use('/members', memberController);
 
+
 // app.use('/api/v1/apiController',apiController);
 /// API /// 
 

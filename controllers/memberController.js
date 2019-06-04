@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Member = require('../models/member');
+const Event = require('../models/event');
 
 /// INDEX/GET ROUTE, gets. a resource /// 
 router.get('/', async (req, res, next) => {
@@ -111,5 +112,24 @@ router.delete('/:id', async (req, res, next) => {
 
 /// DELETE ROUTE //
 
+// event post route //
+router.post('/:id/events', async (req,res,next) => {
+	console.log('creating an event');
+
+	try {
+
+		const createdEvent = await Event.create(req.body)
+
+		res.json({
+			status: 200,
+			data: createdEvent,
+			credentials:'include'
+		})
+
+	} catch (err){
+		next(err)
+	}
+})
+// event post route //
 
 module.exports = router;
