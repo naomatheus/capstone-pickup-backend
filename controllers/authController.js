@@ -42,6 +42,10 @@ router.post('/register', async (req, res, next) => {
 				// ... zipcode, email, etc
 				const createdMember = await Member.create(req.body)
 
+					console.log(createdMember, '<-- this is createdMember');
+				req.session.userDbId = createdMember._id
+				console.log(req.session.userDbId, '<-- users session id');
+
 				res.json({
 					status: 200,
 					data: createdMember,

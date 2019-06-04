@@ -112,6 +112,7 @@ router.delete('/:id', async (req, res, next) => {
 
 /// DELETE ROUTE //
 
+//// EVENT ROUTES /////
 // event post route //
 router.post('/:id/events', async (req,res,next) => {
 	console.log('creating an event');
@@ -119,6 +120,14 @@ router.post('/:id/events', async (req,res,next) => {
 	try {
 
 		const createdEvent = await Event.create(req.body)
+
+		/// find the id of the logged in user, and send that user's ID into the createdBy propety of the event
+		
+		const foundMember = await Member.findOne({_id:req.params.id});
+
+		console.log(foundMember._id, '<-- foundmember_id in events post route');
+
+		await createdEvent.createdBy.push(foundMember._id);
 
 		res.json({
 			status: 200,

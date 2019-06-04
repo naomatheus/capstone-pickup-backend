@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const session = require('express-session');
 const Event = require('../models/event');
+const Member = require('../models/member');
 
 // index route //
 
@@ -48,16 +49,25 @@ router.get('/:id', async (req,res,next) => {
 /// post route ///
 
 router.post('/', async (req,res,next) => {
-	console.log('creating an event');
+	
 
 	try {
-
+		console.log('creating an event <------');
 		const createdEvent = await Event.create(req.body)
+
+		/// find the id of the logged in user, and send that user's ID into the createdBy propety of the event
+
+		console.log(req.session, '<-- this is req.session');
+		// console.log(req., '<-- this is req.session');
+
+		// const foundMember = Member.findOne({req.session.userDbId <-- don't actually have this req.session});
+
 
 		res.json({
 			status: 200,
 			data: createdEvent,
-			credentials:'include'
+			credentials:'include',
+			otherData: 'is this the event post'
 		})
 
 	} catch (err){
@@ -88,6 +98,12 @@ router.put('/:id', async (req,res,next) => {
 })
 
 /// put route /// 
+
+/// patch route /// 
+
+/// This route should push memberAttendees into event as the members are selecting the events they want to attend (pressing, attend event or w/e on the squad up page);
+
+/// patch route /// 
 
 // delete route // 
 
