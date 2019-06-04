@@ -57,9 +57,6 @@ router.post('/', async (req,res,next) => {
 		
 		// const foundMember = Member.findOne({req.session.userDbId <-- don't actually have this req.session});
 
-		
-
-
 		res.json({
 			status: 200,
 			data: createdEvent,

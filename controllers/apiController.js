@@ -10,8 +10,6 @@ const fetch = require('node-fetch');
 router.get('/', async (req, res, next) => {
 	
 	console.log('the chicago park district api route is being hit');
-
-
 	try {
 
 		const allParkData = await fetch('https://data.cityofchicago.org/api/views/eix4-gf83/rows.json?accessType=DOWNLOAD', {
@@ -51,7 +49,6 @@ router.get('/', async (req, res, next) => {
 	} catch (err){
 		next(err)
 	}
-
 })
 
 module.exports = router;
