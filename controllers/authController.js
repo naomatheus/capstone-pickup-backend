@@ -77,7 +77,7 @@ router.post('/login', async (req, res, next) => {
 				const passwordMatch = bcrypt.compareSync(req.body.password, hashedPassword);
 				console.log(passwordMatch, '<-- this is passwordMatch comparison');
 				if (passwordMatch){
-					req.session.usersDbId = foundMember._id
+					req.session.userDbId = foundMember._id
 
 					req.session.username = req.body.username
 
