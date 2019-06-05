@@ -57,6 +57,7 @@ router.put('/:id', async (req,res,next) => {
 	try {
 
 		const foundMember = await Member.findByIdAndUpdate(req.params.id, req.body, {new: true});
+		await foundMember.save();
 
 		res.json({
 			status: 200,
