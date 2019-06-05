@@ -46,7 +46,7 @@ router.post('/register', async (req, res, next) => {
 				req.session.userDbId = createdMember._id
 				console.log(req.session.userDbId, '<-- users session id');
 
-				res.json({
+				res.send({
 					status: 200,
 					data: createdMember,
 					credentials: 'include'
