@@ -11,7 +11,10 @@ router.get('/', async (req, res, next) => {
 		console.log('events index route hit');
 	try {
 
-		const allEvents = await Event.find({});
+		const allEvents = await Event.find({})
+			.populate('createdBy')
+			.populate('memberAttendees');
+			
 		res.json({
 			status: 200,
 			data: allEvents,

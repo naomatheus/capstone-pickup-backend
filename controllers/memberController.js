@@ -33,14 +33,16 @@ router.get('/:id', async (req,res,next) => {
 	
 	try {
 		const oneMember = await Member.findById(req.params.id)
-		/// OR /// 
-		// const oneSample = await Member.findOne({
-		// 	username: req.body.username
-		// });
+		const events = await Event.find({
+			createdBy: oneMember._id
+		})
+		console.log("\events:");
+		console.log(events);
 		res.json({
 			status: 200,
 			data: oneMember,
-			credentials: 'include'
+			credentials: 'include',
+			events: events
 		})
 
 	} catch (err) {
@@ -101,18 +103,19 @@ router.post('/:id/events', async (req,res,next) => {
 
 	try {
 
-		const createdEvent = await Event.create(req.body)
-
-		/// find the id of the logged in user, and send that user's ID into the createdBy propety of the event
-		
+		const createdEvent = new Event(req.body)
 		const foundMember = await Member.findOne({_id:req.params.id});
 
-		await createdEvent.createdBy.push(foundMember._id);
+		/// find the id of the logged in user, and send that user's ID into the createdBy propety of the event
+		// foundMember.eventsCreated.push(createdEvent);
+		
+		createdEvent.createdBy = foundMember		
+		await createdEvent.save()
 
 		/// when an event is created, it gets pushed  into the foundMember's eventsCreated array. eventsCreated array on the member receives the eventId
-		await foundMember.eventsCreated.push(createdEvent._id);
 
-		console.log(foundMember, 'after the event is pushed in ');
+		// console.log(foundMember, 'after the event is pushed in ');
+		// await foundMember.save();
 
 
 		res.json({
@@ -152,6 +155,9 @@ router.patch('/:id/events/:eventId/join', async (req, res, next) => {
 	attendingMember.eventsAttending.push(updatedEvent._id);
 
 	console.log(attendingMember, '<-- this is the member document that should receive an eventId in its eventsAttending property');
+
+	await updatedEvent.save();
+	await attendingMember.save();
 
 	res.json({
 		status: 200,
