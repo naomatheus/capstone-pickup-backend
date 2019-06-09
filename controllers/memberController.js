@@ -11,7 +11,9 @@ router.get('/', async (req, res, next) => {
 
 	try {
 
-		const allMembers = await Member.find({});
+		const allMembers = await Member.find({})
+		.populate('eventsAttending')
+		.populate('Member');
 
 		res.json({
 			status: 200,
