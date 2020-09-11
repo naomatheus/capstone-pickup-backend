@@ -12,7 +12,7 @@
     "express-session": "^1.16.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.5.12",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "superagent": "^5.0.5"
   },
   "devDependencies": {},
